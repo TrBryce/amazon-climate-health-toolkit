@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A browser-based toolkit for harmonizing climate, environment and health data in the Peruvian Amazon.">
+  <title>Amazon Climate–Health Data Harmonizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav wrap" aria-label="Primary navigation">
+      <a class="brand" href="#top">ACH<span>H</span></a>
+      <div class="nav-links">
+        <a href="#tool">Tool</a>
+        <a href="#method">Method</a>
+        <a href="https://github.com/TrBryce/amazon-climate-health-toolkit" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </nav>
+    <div class="hero-content wrap" id="top">
+      <div>
+        <p class="eyebrow">OPEN-SOURCE • ONE HEALTH • AMAZONIA</p>
+        <h1>Amazon Climate–Health<br>Data Harmonizer</h1>
+        <p class="lead">A lightweight tool for transforming mixed health and environmental records into a consistent, analysis-ready dataset.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#tool">Open the tool</a>
+          <button class="button ghost" id="heroDemo" type="button">Try demo data</button>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Tool capabilities">
+        <div class="signal"><span></span>Runs locally in your browser</div>
+        <h2>From field records<br>to comparable evidence</h2>
+        <ul>
+          <li>Standardizes English and Spanish column names</li>
+          <li>Classifies rising- and falling-water seasons</li>
+          <li>Summarizes parasite, malaria and anemia outcomes</li>
+          <li>Exports a clean CSV without uploading data</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section wrap" id="tool">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow dark">INTERACTIVE WORKSPACE</p>
+          <h2>Harmonize a dataset</h2>
+        </div>
+        <p>Your file remains on your device. For public repositories, use only synthetic or fully de-identified data.</p>
+      </div>
+
+      <div class="workspace">
+        <section class="panel upload-panel" aria-labelledby="uploadTitle">
+          <div class="panel-title">
+            <span class="step">01</span>
+            <div>
+              <h3 id="uploadTitle">Load data</h3>
+              <p>Upload a CSV or use the included synthetic example.</p>
+            </div>
+          </div>
+
+          <label class="dropzone" id="dropzone" for="csvFile">
+            <input id="csvFile" type="file" accept=".csv,text/csv">
+            <span class="upload-icon" aria-hidden="true">↑</span>
+            <strong>Choose a CSV file</strong>
+            <small>or drag and drop it here</small>
+          </label>
+
+          <button class="button secondary full" id="demoButton" type="button">Load synthetic demo</button>
+          <div class="status" id="status" role="status" aria-live="polite">No dataset loaded.</div>
+
+          <details>
+            <summary>Accepted column names</summary>
+            <p class="small">The tool recognizes common aliases such as <code>fecha/date</code>, <code>distrito/location</code>, <code>lluvia_mm/rainfall_mm</code>, <code>parasitosis/parasite_positive</code>, <code>malaria/malaria_positive</code>, and <code>hemoglobina/hemoglobin_g_dl</code>.</p>
+          </details>
+        </section>
+
+        <section class="panel results-panel" aria-labelledby="resultsTitle">
+          <div class="panel-title results-title-row">
+            <div class="title-group">
+              <span class="step">02</span>
+              <div>
+                <h3 id="resultsTitle">Review outputs</h3>
+                <p>Filter, inspect and export the standardized records.</p>
+              </div>
+            </div>
+            <button class="button export" id="exportButton" type="button" disabled>Download harmonized CSV</button>
+          </div>
+
+          <div class="filters" aria-label="Dataset filters">
+            <label>Location
+              <select id="locationFilter" disabled><option value="all">All locations</option></select>
+            </label>
+            <label>Hydrological season
+              <select id="seasonFilter" disabled>
+                <option value="all">All seasons</option>
+                <option value="Rising-water">Rising-water (Dec–May)</option>
+                <option value="Falling-water">Falling-water (Jun–Nov)</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="metrics" id="metrics">
+            <article><span>Records</span><strong>—</strong><small>valid rows</small></article>
+            <article><span>Parasite positivity</span><strong>—</strong><small>among reported</small></article>
+            <article><span>Malaria positivity</span><strong>—</strong><small>among reported</small></article>
+            <article><span>Anemia</span><strong>—</strong><small>among reported</small></article>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-heading">
+              <div>
+                <h4>Health outcomes by hydrological season</h4>
+                <p>Descriptive prevalence among records with a reported outcome.</p>
+              </div>
+              <span class="legend"><i></i> Positive / reported</span>
+            </div>
+            <div id="chart" class="chart-empty">Load data to generate the comparison.</div>
+          </div>
+
+          <div class="quality-grid">
+            <div class="quality-card">
+              <h4>Data quality</h4>
+              <div id="quality">No quality checks available.</div>
+            </div>
+            <div class="quality-card">
+              <h4>Detected variables</h4>
+              <div id="variables" class="tags"><span>None</span></div>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <caption>Preview of harmonized records (first 50 rows)</caption>
+              <thead id="tableHead"></thead>
+              <tbody id="tableBody"><tr><td class="empty-cell">No records to display.</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="method-section" id="method">
+      <div class="wrap method-grid">
+        <div>
+          <p class="eyebrow dark">REPRODUCIBLE BY DESIGN</p>
+          <h2>A transparent workflow</h2>
+          <p>The browser application and the accompanying R script follow the same logic so results can be reviewed and reproduced.</p>
+        </div>
+        <ol class="method-steps">
+          <li><span>1</span><div><strong>Ingest</strong><p>Read CSV records without sending them to a server.</p></div></li>
+          <li><span>2</span><div><strong>Standardize</strong><p>Map common Spanish and English field names to one schema.</p></div></li>
+          <li><span>3</span><div><strong>Derive</strong><p>Normalize binary outcomes and assign hydrological season from date.</p></div></li>
+          <li><span>4</span><div><strong>Review</strong><p>Check missingness, compare outcomes and export analysis-ready data.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="note-section wrap">
+      <div class="note">
+        <strong>Scope and ethics</strong>
+        <p>This is an educational and research data tool, not a clinical diagnostic system. Its summaries do not establish causality, and decisions should follow validated protocols and expert review.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div><strong>Amazon Climate–Health Data Harmonizer</strong><p>Created by Kervin B. Tapayuri-Rengifo, Biologist, M.Sc.</p></div>
+      <p>Open-source demonstration • Synthetic data included</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

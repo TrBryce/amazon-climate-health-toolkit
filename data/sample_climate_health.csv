@@ -1,0 +1,17 @@
+record_id,date,location,age,sex,rainfall_mm,flood_level_cm,water_ecoli_cfu,wash_access,parasite_positive,parasite_species,malaria_positive,plasmodium_species,hemoglobin_g_dl,anemia
+AMZ001,2026-01-15,Belen,8,F,312,168,190,no,yes,Blastocystis sp.,no,,10.4,yes
+AMZ002,2026-01-19,Belen,11,M,298,174,120,no,yes,Giardia duodenalis,no,,11.8,no
+AMZ003,2026-02-05,San Juan,7,F,340,182,85,yes,no,,yes,Plasmodium vivax,10.7,yes
+AMZ004,2026-02-20,Punchana,13,M,355,190,210,no,yes,Endolimax nana,no,,12.6,no
+AMZ005,2026-03-12,Belen,9,F,326,201,155,no,yes,Trichuris trichiura,no,,10.9,yes
+AMZ006,2026-04-08,San Juan,12,M,280,188,42,yes,no,,no,,12.9,no
+AMZ007,2026-05-17,Punchana,10,F,245,171,96,yes,yes,Blastocystis sp.,yes,Plasmodium vivax,11.1,no
+AMZ008,2026-06-09,Belen,8,M,182,135,70,yes,no,,no,,11.6,no
+AMZ009,2026-07-14,San Juan,14,F,124,103,38,yes,no,,no,,12.4,no
+AMZ010,2026-08-02,Punchana,6,M,96,82,115,no,yes,Giardia duodenalis,no,,10.3,yes
+AMZ011,2026-09-21,Belen,11,F,88,70,65,yes,no,,yes,Plasmodium falciparum,11.4,no
+AMZ012,2026-10-11,San Juan,9,M,110,77,52,yes,no,,no,,12.1,no
+AMZ013,2026-11-05,Punchana,12,F,156,99,140,no,yes,Blastocystis sp.|Endolimax nana,no,,11.0,yes
+AMZ014,2026-12-13,Belen,7,M,270,145,180,no,yes,Ascaris lumbricoides,no,,10.5,yes
+AMZ015,2026-04-25,Punchana,15,F,290,180,48,yes,no,,no,,12.7,no
+AMZ016,2026-07-30,Belen,10,M,130,91,88,yes,yes,Blastocystis sp.,no,,11.3,no
